@@ -4,10 +4,10 @@ using UnityEngine;
 
 // MAZE PROC GEN LAB
 // all students: complete steps 1-6, as listed in this file
-// optional: if you have extra time, complete the "extra tasks" to do at the very bottom
+// optional: if you're up for a bit of a mind safari, complete the "extra tasks" to do at the very bottom
 
 // STEP 1: ======================================================================================
-// put this script on a Sphere... it will move around, and drop a path of floor tiles behind it
+// put this script on a Sphere... it SHOULD move around, and drop a path of floor tiles behind it
 
 public class Pathmaker : MonoBehaviour {
 
@@ -15,7 +15,7 @@ public class Pathmaker : MonoBehaviour {
 // translate the pseudocode below
 
 //	DECLARE CLASS MEMBER VARIABLES:
-//	Declare a private integer called counter that starts at 0; 		// counter var will track how many floor tiles I've instantiated
+//	Declare a private integer called counter that starts at 0; 		// counter will track how many floor tiles I've instantiated
 //	Declare a public Transform called floorPrefab, assign the prefab in inspector;
 //	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
 
@@ -39,8 +39,6 @@ public class Pathmaker : MonoBehaviour {
 
 // MORE STEPS BELOW!!!........
 
-
-
 // STEP 3: =====================================================================================
 // implement, test, and stabilize the system
 
@@ -57,7 +55,7 @@ public class Pathmaker : MonoBehaviour {
 // tune your values...
 
 // a. how long should a pathmaker live? etc.  (see: static  ---^)
-// b. how would you tune the probabilities to generate lots of long hallways? does it work?
+// b. how would you tune the probabilities to generate lots of long hallways? does it... work?
 // c. tweak all the probabilities that you want... what % chance is there for a pathmaker to make a pathmaker? is that too high or too low?
 
 
@@ -86,6 +84,10 @@ public class Pathmaker : MonoBehaviour {
 
 
 // OPTIONAL EXTRA TASKS TO DO, IF YOU WANT / DARE: ===================================================
+
+// AVOID SPAWNING A TILE IN THE SAME PLACE AS ANOTHER TILE  https://docs.unity3d.com/ScriptReference/Physics.OverlapSphere.html
+// Check out the Physics.OverlapSphere functionality... 
+//     If the collider is overlapping any others (the tile prefab has one), prevent a new tile from spawning and move forward one space. 
 
 // DYNAMIC CAMERA:
 // position the camera to center itself based on your generated world...
