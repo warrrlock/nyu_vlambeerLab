@@ -35,10 +35,9 @@ public class Pathmaker : MonoBehaviour {
 //			Destroy my game object; 		// self destruct if I've made enough tiles already
 	}
 
-} // end of class scope
+} 
 
 // MORE STEPS BELOW!!!........
-
 
 
 
@@ -75,9 +74,9 @@ public class Pathmaker : MonoBehaviour {
 // art pass, usability pass
 
 // - move the game camera to a position high in the world, and then point it down, so we can see your world get generated
-// - CHANGE THE DEFAULT UNITY COLORS, PLEASE, I'M BEGGING YOU
+// - CHANGE THE DEFAULT UNITY COLORS
 // - add more detail to your original floorTile placeholder -- and let it randomly pick one of 3 different floorTile models, etc. so for example, it could randomly pick a "normal" floor tile, or a cactus, or a rock, or a skull
-//		- MODEL 3 DIFFERENT TILES IN MAYA! DON'T STOP USING MAYA OR YOU'LL FORGET IT ALL
+//		- MODEL 3 DIFFERENT TILES IN BLENDER.  CREATE SOMETHING WILD TO PROCEDURALLY GENERATE
 //		- add a simple in-game restart button; let us press [R] to reload the scene and see a new level generation
 // - with Text UI, name your proc generation system ("AwesomeGen", "RobertGen", etc.) and display Text UI that tells us we can press [R]
 
