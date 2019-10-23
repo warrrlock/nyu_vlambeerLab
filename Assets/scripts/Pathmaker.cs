@@ -45,18 +45,18 @@ public class Pathmaker : MonoBehaviour {
 // implement, test, and stabilize the system
 
 //	IMPLEMENT AND TEST:
-//	- save your scene!!! the code could potentially be infinite / exponential, and crash Unity
+//	- save your scene! the code could potentially be infinite / exponential, and crash Unity
 //	- put Pathmaker.cs on a sphere, configure all the prefabs in the Inspector, and test it to make sure it works
 //	STABILIZE: 
 //	- code it so that all the Pathmakers can only spawn a grand total of 500 tiles in the entire world; how would you do that?
-//	- (hint: declare a "public static int" and have each Pathmaker check this "globalTileCount", somewhere in your code? if there are already enough tiles, then maybe the Pathmaker could Destroy my game object
-
-
+//	- hint: declare a "public static int" and have each Pathmaker check this "globalTileCount", somewhere in your code? 
+//      -  What is a 'static'?  Static???  Simply speak the password "static" to the instructor and knowledge will flow.
+//	- Perhaps... if there already are enough tiles maybe the Pathmaker could Destroy my game object
 
 // STEP 4: ======================================================================================
 // tune your values...
 
-// a. how long should a pathmaker live? etc.
+// a. how long should a pathmaker live? etc.  (see: static  ---^)
 // b. how would you tune the probabilities to generate lots of long hallways? does it work?
 // c. tweak all the probabilities that you want... what % chance is there for a pathmaker to make a pathmaker? is that too high or too low?
 
@@ -76,13 +76,16 @@ public class Pathmaker : MonoBehaviour {
 // - move the game camera to a position high in the world, and then point it down, so we can see your world get generated
 // - CHANGE THE DEFAULT UNITY COLORS
 // - add more detail to your original floorTile placeholder -- and let it randomly pick one of 3 different floorTile models, etc. so for example, it could randomly pick a "normal" floor tile, or a cactus, or a rock, or a skull
-//		- MODEL 3 DIFFERENT TILES IN BLENDER.  CREATE SOMETHING WILD TO PROCEDURALLY GENERATE
-//		- add a simple in-game restart button; let us press [R] to reload the scene and see a new level generation
+// - or... make large city tiles and create a city.  Set the camera low so and une the values so the city tiles get clustered tightly together.
+
+//		- MODEL 3 DIFFERENT TILES IN BLENDER.  CREATE SOMETHING FROM THE DEEP DEPTHS OF YOUR MIND TO PROCEDURALLY GENERATE. 
+//		- THESE TILES CAN BE BASED ON PAST MODELS YOU'VE MADE, OR NEW.  BUT THEY NEED TO BE UNIQUE TO THIS PROJECT AND CLEARLY TILE-ABLE.
+
+//		- then, add a simple in-game restart button; let us press [R] to reload the scene and see a new level generation
 // - with Text UI, name your proc generation system ("AwesomeGen", "RobertGen", etc.) and display Text UI that tells us we can press [R]
 
 
-
-// OPTIONAL EXTRA TASKS TO DO, IF YOU WANT: ===================================================
+// OPTIONAL EXTRA TASKS TO DO, IF YOU WANT / DARE: ===================================================
 
 // DYNAMIC CAMERA:
 // position the camera to center itself based on your generated world...
@@ -93,7 +96,7 @@ public class Pathmaker : MonoBehaviour {
 // BETTER UI:
 // learn how to use UI Sliders (https://unity3d.com/learn/tutorials/topics/user-interface-ui/ui-slider) 
 // let us tweak various parameters and settings of our tech demo
-// let us click a UI Button to reload the scene, so we don't even need the keyboard anymore!
+// let us click a UI Button to reload the scene, so we don't even need the keyboard anymore.  Throw that thing out!
 
 // WALL GENERATION
 // add a "wall pass" to your proc gen after it generates all the floors
