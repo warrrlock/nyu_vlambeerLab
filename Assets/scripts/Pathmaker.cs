@@ -4,7 +4,7 @@ using UnityEngine;
 
 // MAZE PROC GEN LAB
 // all students: complete steps 1-6, as listed in this file
-// optional: if you're up for a bit of a mind safari, complete the "extra tasks" to do at the very bottom
+// optional: if you're up for a mind safari, complete the "extra tasks" to do at the very bottom
 
 // STEP 1: ======================================================================================
 // put this script on a Sphere... it SHOULD move around, and drop a path of floor tiles behind it
@@ -83,7 +83,7 @@ public class Pathmaker : MonoBehaviour {
 // - with Text UI, name your proc generation system ("AwesomeGen", "RobertGen", etc.) and display Text UI that tells us we can press [R]
 
 
-// OPTIONAL EXTRA TASKS TO DO, IF YOU WANT / DARE: ===================================================
+// EXTRA TASKS TO DO, IF YOU WANT / DARE: ===================================================
 
 // AVOID SPAWNING A TILE IN THE SAME PLACE AS ANOTHER TILE  https://docs.unity3d.com/ScriptReference/Physics.OverlapSphere.html
 // Check out the Physics.OverlapSphere functionality... 
@@ -102,7 +102,7 @@ public class Pathmaker : MonoBehaviour {
 
 // WALL GENERATION
 // add a "wall pass" to your proc gen after it generates all the floors
-// 1. raycast downwards around each floor tile (that'd be 8 raycasts per floor tile, in a square "ring" around each tile?)
+// 1. raycast out from each floor tile (that'd be 4 raycasts per floor tile, in a square "ring" around each tile?)
 // 2. if the raycast "fails" that means there's empty void there, so then instantiate a Wall tile prefab
 // 3. ... repeat until walls surround your entire floorplan
 // (technically, you will end up raycasting the same spot over and over... but the "proper" way to do this would involve keeping more lists and arrays to track all this data)
