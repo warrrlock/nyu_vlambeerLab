@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // MAZE PROC GEN LAB
 // all students: complete steps 1-6, as listed in this file
@@ -11,28 +12,115 @@ using UnityEngine;
 
 public class Pathmaker : MonoBehaviour {
 
-// STEP 2: ============================================================================================
-// translate the pseudocode below
+	// STEP 2: ============================================================================================
+	// translate the pseudocode below
 
-//	DECLARE CLASS MEMBER VARIABLES:
-//	Declare a private integer called counter that starts at 0; 		// counter will track how many floor tiles I've instantiated
-//	Declare a public Transform called floorPrefab, assign the prefab in inspector;
-//	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
+	//	DECLARE CLASS MEMBER VARIABLES:
+	//private int counter = 0;//	Declare a private integer called counter that starts at 0; 		// counter will track how many floor tiles I've instantiated
+	public Transform floorPrefab;//	Declare a public Transform called floorPrefab, assign the prefab in inspector;
+	public Transform pathmakerSpherePrefab; //	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
+	public GameObject tilesObj;
+	public GameObject SphereObj;
+	public static int globalTileCount = 0;
+	public static int MaxTile = 0;
+	public static int pathmakerLife = 0;
+	private float forwardcount = 10;
+	public static int counter = 0;
+	private int chooseTile;
+	public Sprite tile1;
+	public Sprite tile2;
+	public Sprite tile3;
+	public Sprite tile4;
+	public GameObject camera1;
+	public GameObject canvas1;
+	public static Vector3 tilesPos = new Vector3(0, 390, 0);
+	public AudioSource sounds;
+	public AudioClip spawnsound;
+	private bool readytospawn;
 
+	void Start() {
+		counter = Random.Range(50, 100);
+		chooseTile = Random.Range(1,5);
+		tilesPos = new Vector3(0, 390, 0);
+		canvas1.gameObject.SetActive(false);
+	}
 
-	void Update () {
-//		If counter is less than 50, then:
-//			Generate a random number from 0.0f to 1.0f;
-//			If random number is less than 0.25f, then rotate myself 90 degrees;
-//				... Else if number is 0.25f-0.5f, then rotate myself -90 degrees;
-//				... Else if number is 0.99f-1.0f, then instantiate a pathmakerSpherePrefab clone at my current position;
-//			// end elseIf
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.R) && readytospawn == true)
+		{
+			readytospawn = false;
+			Pathmaker.globalTileCount = 0;
+			counter = 0;
+			sounds.PlayOneShot(spawnsound);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			Debug.Log("Restart");
+		}
 
-//			Instantiate a floorPrefab clone at current position;
-//			Move forward ("forward", as in, the direction I'm currently facing) by 5 units;
-//			Increment counter;
-//		Else:
-//			Destroy my game object; 		// self destruct if I've made enough tiles already
+		if (counter < 500 && Pathmaker.globalTileCount < 500) 
+		{                      
+			float randomNum = Random.Range(0.0f, 1.0f);
+			Pathmaker.pathmakerLife = Random.Range(1, 20);
+
+			if (randomNum < 0.2f)    //			If random number is less than 0.25f, then rotate myself 90 degrees;
+			{
+				transform.Rotate(0, 90, 0); //rotate 90
+			}
+				else if (randomNum == Random.Range(0.3f, 0.4f))
+				{
+					transform.Rotate(0, -90, 0); //rotate -90
+				}
+				else if (randomNum == Random.Range(0.4f, 0.5f))
+				{
+					transform.Rotate(0, 180, 0); //rotate -90
+				}
+				else if (randomNum == Random.Range(0.5f,0.6f)) 
+				{
+					transform.Rotate(0, -180, 0);
+				}
+				else if (randomNum > 0.9f)
+				{
+					Instantiate(pathmakerSpherePrefab, transform.position, transform.rotation);
+				}
+
+				GameObject tile = Instantiate(floorPrefab.gameObject, transform.position, Quaternion.Euler(90, 0, 0));
+				tilesPos += transform.position;
+				SpriteRenderer tileSprite = tile.GetComponent<SpriteRenderer>();
+				if (chooseTile == 1)
+				{
+					tileSprite.sprite = tile1;
+				}
+				else if (chooseTile == 2)
+				{
+					tileSprite.sprite = tile2;
+				}
+				else if (chooseTile == 3)
+				{
+					tileSprite.sprite = tile3;
+				}
+				else if (chooseTile == 4)
+				{
+					tileSprite.sprite = tile4;
+				}
+
+			transform.Translate(Vector3.forward * forwardcount);
+				Pathmaker.globalTileCount++;
+
+			Collider[] hitCollider = Physics.OverlapSphere(transform.position, 0.5f);
+
+			camera1.transform.position = new Vector3(tilesPos.x / (globalTileCount + 15), 390, tilesPos.z / (globalTileCount + 15));
+			canvas1.transform.position = new Vector3(tilesPos.x / (globalTileCount + 15), 0, tilesPos.z / (globalTileCount + 15));
+
+			counter++;
+
+		}
+		else//		once 500 count is reached.. 
+		{
+			Destroy(gameObject); //kiill self
+			canvas1.gameObject.SetActive(true);
+			readytospawn = true;
+		}
+
 	}
 
 } 
